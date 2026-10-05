@@ -1,0 +1,12 @@
+name = "simplean"
+version = "0.1.0"
+defaultTargets = ["Simplean"]
+
+[leanOptions]
+autoImplicit = false
+
+[[lean_lib]]
+name = "Simplean"
+
+[[lean_lib]]
+name = "Exercises"
