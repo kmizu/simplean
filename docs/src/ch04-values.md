@@ -59,8 +59,7 @@ HasType (cons v w) (list t)
 `HasType (.cons (.int 1) (.nil .int)) (.list .int)` を証明するには、規則を下から上へたどります。
 
 ```lean
-example : HasType (.cons (.int 1) (.nil .int)) (.list .int) :=
-  .cons (.int 1) (.nil .int)
+{{#include ../../Simplean/Tests.lean:hastype_example}}
 ```
 
 `HasType.cons` に、`HasType.int 1`（`.int 1` と略記）と `HasType.nil .int` を渡しています。証明がデータ（木）として書けるのが、帰納的述語の良いところです。tactic で書くなら `by constructor <;> constructor` です。
@@ -73,7 +72,7 @@ example : HasType (.cons (.int 1) (.nil .int)) (.list .int) :=
 {{#include ../../Simplean/Ops.lean:hastypes}}
 ```
 
-`HasTypes [v₁, v₂] [t₁, t₂]` は「`v₁ : t₁` かつ `v₂ : t₂`」です。Lean の標準ライブラリにも似た述語（`List.Forall₂`）がありますが、依存を増やさないよう自前で定義しています。
+`HasTypes [v₁, v₂] [t₁, t₂]` は「`v₁ : t₁` かつ `v₂ : t₂`」です。外部ライブラリ（Batteries / Mathlib）には同じ役割の `List.Forall₂` がありますが、依存を増やさないよう自前で定義しています。
 
 ## 環境：名前から値へ
 

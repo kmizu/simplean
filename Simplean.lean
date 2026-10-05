@@ -14,3 +14,4 @@ import Simplean.Correctness.Stmt
 import Simplean.Determinism
 import Simplean.Examples
 import Simplean.Tests
+import Simplean.Playground

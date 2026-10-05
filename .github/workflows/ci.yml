@@ -19,3 +19,14 @@ jobs:
         run: lake build Exercises
       - name: Tutorial includes resolve
         run: python3 scripts/check_includes.py
+
+  scala:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: leanprover/lean-action@v1
+        with:
+          build-args: "Simplean Lens extract"
+      - uses: VirtusLab/scala-cli-setup@v1
+      - name: Extract Scala 3 and compare with Lean
+        run: scripts/scala-check.sh

@@ -51,12 +51,10 @@ VM 側にも同じ性質があります。
 `final_checked` は型検査器を通ったプログラムについての版で、`checkProg_sound`（第 5 章）で前提を作っています。具体的なプログラムについては、
 
 ```lean
-example : HasType (.int 3628800) .int ∧
-    ∃ k, run (compileProg Examples.factProg) k VMState.init = some (.int 3628800) :=
-  final_checked (by decide) Tests.fact_eval
+{{#include ../../Simplean/Tests.lean:final_example}}
 ```
 
-のように、`checkProg factProg = some .int` を `decide` で、`evalProg factProg 100 = .ok …` をテストの定理で渡せば、階乗プログラムについての完全な保証が手に入ります。
+のように、`checkProg factProg = some .int`（`fact_check`、`decide` で証明）と `evalProg factProg 100 = .ok …`（`fact_eval`）を渡せば、階乗プログラムについての完全な保証が手に入ります。
 
 ## 何に依存しているか：`#print axioms`
 

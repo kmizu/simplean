@@ -58,7 +58,7 @@ while 1 { skip }
 {{#include ../../Simplean/Semantics.lean:eval}}
 ```
 
-三つの関数が `mutual` ブロックで相互再帰しています。すべて第一引数の fuel に関する構造的再帰で、`n + 1` の場合に `n` を渡して再帰します。
+三つの関数が `mutual` ブロックで相互再帰しています。すべて fuel（`P` の次の引数）に関する構造的再帰で、`n + 1` の場合に `n` を渡して再帰します。
 
 ### 式 `evalE`
 
@@ -95,10 +95,12 @@ while 1 { skip }
 
 ## 動かす
 
+`Simplean/Playground.lean` の最初の三行がこれに当たります。
+
 ```lean
-#eval evalProg Examples.factProg 100     -- Res.ok (Val.int 3628800)
-#eval evalProg Examples.factProg 5       -- Res.timeout
-#eval evalProg Examples.illAddStr 10     -- Res.err
+#eval evalProg factProg 100     -- Simplean.Res.ok (Simplean.Val.int 3628800)
+#eval evalProg factProg 5       -- Simplean.Res.timeout
+#eval evalProg illAddStr 10     -- Simplean.Res.err
 ```
 
 fuel が足りなければ `timeout`、型が合わなければ `err` です。`timeout` と `err` が区別されていることを確認してください。

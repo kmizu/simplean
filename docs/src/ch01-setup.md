@@ -41,13 +41,13 @@ VS Code で `simplean` フォルダを開き、任意の `.lean` ファイル（
 - カーソルを `#eval` の行に置くと、評価結果が表示されます
 - 証明の途中にカーソルを置くと、その時点の**ゴール**（示すべき命題）と**仮定**が表示されます
 
-試しに `Simplean/Examples.lean` の末尾に次を書き足してみてください。
+試すための場所として `Simplean/Playground.lean` を用意してあります。必要な `import` と `open` が済んでいるので、末尾に式を書き足せばそのまま評価できます。
 
 ```lean
-#eval evalProg factProg 100
+{{#include ../../Simplean/Playground.lean:playground}}
 ```
 
-Infoview に `Simplean.Res.ok (Simplean.Val.int 3628800)` と表示されれば、環境は整っています。`10!`（10 の階乗）を Simplean で計算した結果です。
+最初の行にカーソルを置いて、Infoview に `Simplean.Res.ok (Simplean.Val.int 3628800)` と表示されれば、環境は整っています。`10!`（10 の階乗）を Simplean で計算した結果です。以降の章に出てくる `#eval` も、このファイルで試してください。
 
 ## 自分の手で確かめる
 

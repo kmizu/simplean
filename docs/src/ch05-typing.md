@@ -19,7 +19,7 @@
 {{#include ../../Simplean/Ops.lean:binopTy}}
 ```
 
-`unopTy op t` は「`op` を型 `t` の値に適用したときの結果の型」、型が合わなければ `none` です。`eq` は同じ型どうしなら何でも比較でき、`cons` は要素と同じ要素型のリストにだけ付けられます。`head` が `list t` から `t` を取り出すのに、前章の `nil` が型を持っていたことが効いています（等式検査が要らない）。
+`unopTy op t` は「`op` を型 `t` の値に適用したときの結果の型」、型が合わなければ `none` です。`eq` は同じ型どうしなら何でも比較でき、`cons` は要素と同じ要素型のリストにだけ付けられます。
 
 ## 式の型付け
 
@@ -96,17 +96,16 @@ x := x + 1      -- x は Int のはず……
 {{#include ../../Simplean/Checker.lean:checkProg}}
 ```
 
-`typeOf` は `do` 記法で失敗を伝播し、`checkStmt` は `match` で複数の条件を同時に確かめています。試してみましょう。
-
-```lean
-#eval checkProg Examples.factProg      -- some (Simplean.Ty.int)
-#eval checkProg Examples.illAddStr     -- none
-```
-
-不正なプログラムの例も用意してあります。
+`typeOf` は `do` 記法で失敗を伝播し、`checkStmt` は `match` で複数の条件を同時に確かめています。不正なプログラムの例を用意してあります。
 
 ```lean
 {{#include ../../Simplean/Examples.lean:ill}}
+```
+
+検査器の結果はテストとして固定してあります。正しいプログラムは `main` の型を返し、不正な四つはどれも `none` です。
+
+```lean
+{{#include ../../Simplean/Tests.lean:checker_tests}}
 ```
 
 ## 検査器の健全性

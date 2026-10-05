@@ -66,7 +66,7 @@ Dependent elimination failed: Failed to solve equation
 
 ## `maximum recursion depth has been reached`
 
-`decide` で VM を 2000 ステップ走らせたときに出ました。通常の `decide` は Lean の評価器を使い、再帰の深さに上限があります。`decide +kernel` に変えると解決します。
+`decide` で VM を 2000 ステップ走らせたときに出ました。通常の `decide` は先にエラボレータの簡約で真偽を求めるので、そこで再帰の深さの上限に当たります。`decide +kernel` に変えると解決します。
 
 ## `has been deprecated`
 
@@ -74,7 +74,7 @@ Dependent elimination failed: Failed to solve equation
 warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
 ```
 
-標準ライブラリの補題名が変わりました。メッセージが新しい名前を教えてくれます。ただし新しい補題の引数の形が違うことがあるので、`#check` で確認してください。この本では `if_pos`/`if_neg` を避け、`split` で `if` を場合分けする書き方に揃えました。
+標準ライブラリの補題名が変わりました。メッセージが新しい名前を教えてくれます。ただし新しい補題の引数の形が違うことがあるので、`#check` で確認してください。この本では `if_pos`/`if_neg` を避け、証明の中の `if` は `split` で場合分けし、`run` の補題だけは新しい名前の `ite_eq_left_of_eq_true`/`ite_eq_right_of_eq_false` で書き換えています。
 
 ## `unexpected token 'while'; expected '_' or identifier`
 

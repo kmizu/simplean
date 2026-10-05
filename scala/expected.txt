@@ -1,0 +1,12 @@
+fact: check=Some(int) eval=ok(3628800) vm=Some(3628800)
+factRec: check=Some(int) eval=ok(3628800) vm=Some(3628800)
+fib: check=Some(int) eval=ok(6765) vm=Some(6765)
+parity: check=Some(int) eval=ok(1) vm=Some(1)
+sumRange: check=Some(int) eval=ok(45) vm=Some(45)
+reverse: check=Some(list(int)) eval=ok([3, 2, 1]) vm=Some([3, 2, 1])
+flatten: check=Some(list(int)) eval=ok([1, 2, 3]) vm=Some([1, 2, 3])
+str: check=Some(str) eval=ok("ababab120") vm=Some("ababab120")
+illAddStr: check=None eval=err vm=None
+illUndeclared: check=None eval=err vm=None
+illRedecl: check=None eval=ok(1) vm=Some(1)
+illArity: check=None eval=err vm=Some(2)

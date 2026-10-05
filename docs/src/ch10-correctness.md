@@ -14,7 +14,7 @@
 {{#include ../../Simplean/VMLemmas.lean:reaches}}
 ```
 
-`Reaches vmP s s'` は「`s` から有限ステップで `s'` へ行ける」です。反射律、推移律、1 ステップの三つで組み立てます。`Reaches.cast` は「等しい状態に書き換える」だけの補題ですが、証明の最後で番地の算術（`pc + (a + b)` と `pc + a + b` の違いなど）を吸収するために頻繫に使います。
+`Reaches vmP s s'` は「`s` から有限ステップで `s'` へ行ける」です。反射律、推移律、1 ステップの三つで組み立てます。`Reaches.cast` は「等しい状態に書き換える」だけの補題ですが、証明の最後で番地の算術（`pc + (a + b)` と `pc + a + b` の違いなど）を吸収するために頻繁に使います。
 
 ### コードの配置 `CodeAt`
 
@@ -58,7 +58,7 @@
 {{#include ../../Simplean/Correctness/Expr.lean:simE}}
 ```
 
-第 9 章と同じ形です。`cases e` で式の形を場合分けし、評価 `hev` を `cases h₁ : evalE P n ρ e₁ with` で分解します（`timeout`/`err` の枝は `hev` と矛盾するので `simp at hev` で消えます）。
+第 9 章と同じ fuel 帰納法ですが、場合分けの対象が違います。第 9 章は型付けの導出（`cases hT`）でしたが、こちらには型付けの仮定が無いので、`cases e` で式の形を直接場合分けし、評価 `hev` を `cases h₁ : evalE P n ρ e₁ with` で分解します（`timeout`/`err` の枝は `hev` と矛盾するので `simp at hev` で消えます）。
 
 - `binop`：`hc : CodeAt C pc (c₁ ++ c₂ ++ [binop op])` を `List.append_assoc` で右結合に直してから、`append_left`/`append_right` で三つに分解。`c₁` に帰納法の仮定 → `c₂` に帰納法の仮定（スタックは `v₁ :: σ`）→ `step_binop`。`Reaches.trans` でつなぐ
 - `call`：引数のコードに `ihA`、`step_call`、本体の文に `ihS`、結果の式に `ihE`、`step_ret`。`step_call` が取り出す引数 `(vs.reverse ++ σ).take k` を `vs.reverse` に戻すのに `List.take_left'`（長さが一致すれば先頭部分がそのまま取れる）を使う。ここで第 6 章の**引数個数検査**（`hlen`）が長さの一致を保証している

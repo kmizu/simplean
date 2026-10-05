@@ -10,3 +10,12 @@ name = "Simplean"
 
 [[lean_lib]]
 name = "Exercises"
+
+# Lens: Lean → Scala 3 extractor (not a default target; build with `lake build Lens extract`)
+[[lean_lib]]
+name = "Lens"
+
+[[lean_exe]]
+name = "extract"
+root = "Lens.Main"
+supportInterpreter = true

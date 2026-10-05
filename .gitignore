@@ -1,3 +1,5 @@
 .lake/
 docs/book/
 .superpowers/
+scala/.scala-build/
+scala/.bsp/

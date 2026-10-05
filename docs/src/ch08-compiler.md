@@ -105,11 +105,11 @@ AST を VM の命令列に変換します。コンパイラそのものは短い
 6: store "x"
 ```
 
-自分で確かめるには、`Simplean/Examples.lean` の末尾などで次を評価してください。
+自分で確かめるには、`Simplean/Playground.lean` の次の二行を評価してください。
 
 ```lean
-#eval (compileProg Examples.factProg).code
-#eval (compileProg Examples.factProg).table
+#eval (compileProg factProg).code
+#eval (compileProg factProg).table
 ```
 
 ## インタプリタと VM は本当に一致するのか
