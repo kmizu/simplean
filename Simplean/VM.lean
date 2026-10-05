@@ -106,11 +106,10 @@ def stepN (vmP : VMProg) : Nat → VMState → Option VMState
 def run (vmP : VMProg) : Nat → VMState → Option Val
   | 0, _ => none
   | fuel + 1, s =>
-    match vmP.code[s.pc]? with
-    | some .halt => s.stack.head?
-    | _ => do
-        let s' ← step vmP s
-        run vmP fuel s'
+    if vmP.code[s.pc]? = some .halt then s.stack.head?
+    else do
+      let s' ← step vmP s
+      run vmP fuel s'
 -- ANCHOR_END: run
 
 end Simplean

@@ -1,5 +1,6 @@
 import Simplean.Examples
 import Simplean.Compiler
+import Simplean.Determinism
 
 /-!
 # テスト
@@ -49,5 +50,36 @@ theorem flatten_vm :
   decide +kernel
 theorem str_vm : run (compileProg strProg) 2000 .init = some (.str "ababab120") := by decide +kernel
 -- ANCHOR_END: vm_tests
+
+-- ANCHOR: axioms
+/-! ## 使った公理の確認
+
+`#print axioms` の出力を `#guard_msgs` で固定する。`sorryAx` や `Lean.ofReduceBool` が
+混ざればビルドが失敗する。 -/
+
+/-- info: 'Simplean.soundness' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in #print axioms soundness
+
+/-- info: 'Simplean.checkProg_sound' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs in #print axioms checkProg_sound
+
+/-- info: 'Simplean.compile_correct' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in #print axioms compile_correct
+
+/-- info: 'Simplean.main_correct' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in #print axioms main_correct
+
+/-- info: 'Simplean.evalProg_det' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in #print axioms evalProg_det
+
+/-- info: 'Simplean.final' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in #print axioms final
+
+/-- info: 'Simplean.final_checked' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in #print axioms final_checked
+
+/-- info: 'Simplean.Tests.fact_vm' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in #print axioms fact_vm
+-- ANCHOR_END: axioms
 
 end Simplean.Tests

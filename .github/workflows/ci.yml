@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: leanprover/lean-action@v1
+        with:
+          build-args: "--wfail"
+      - name: No sorry in the verified library
+        run: "! grep -rnw sorry Simplean Simplean.lean"
+      - name: Exercises elaborate (sorry allowed)
+        run: lake build Exercises
+      - name: Tutorial includes resolve
+        run: python3 scripts/check_includes.py

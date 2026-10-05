@@ -8,5 +8,9 @@ import Simplean.Checker
 import Simplean.Soundness
 import Simplean.VM
 import Simplean.Compiler
+import Simplean.VMLemmas
+import Simplean.Correctness.Expr
+import Simplean.Correctness.Stmt
+import Simplean.Determinism
 import Simplean.Examples
 import Simplean.Tests
