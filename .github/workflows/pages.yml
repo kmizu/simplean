@@ -33,7 +33,7 @@ jobs:
           python3 scripts/check_includes.py
           mdbook build docs
       - name: No unresolved includes in the output
-        run: "! grep -rl '{{#include' docs/book"
+        run: "! grep -rlF '{{#include ' docs/book"
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
