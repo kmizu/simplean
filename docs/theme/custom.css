@@ -1,0 +1,16 @@
+/* 日本語本文のフォント fallback と、コード内の sorry を目立たせる調整 */
+body {
+  font-family: "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Meiryo",
+    system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+code {
+  font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", "Noto Sans Mono CJK JP", Consolas, monospace;
+}
+code.language-lean .hljs-built_in {
+  color: #2a7f62;
+}
+.ayu code.language-lean .hljs-built_in,
+.navy code.language-lean .hljs-built_in,
+.coal code.language-lean .hljs-built_in {
+  color: #7ad7b0;
+}

@@ -1,0 +1,26 @@
+[book]
+title = "Simplean で学ぶ Lean 4"
+authors = ["Kota Mizushima"]
+language = "ja"
+src = "src"
+description = "小さな言語の検証付き処理系（インタプリタ・VM・コンパイラ）を題材に、Lean 4 を初歩から学ぶ"
+
+[build]
+build-dir = "book"
+extra-watch-dirs = ["../Simplean"]
+
+[output.html]
+site-url = "/simplean/"
+git-repository-url = "https://github.com/kmizu/simplean"
+edit-url-template = "https://github.com/kmizu/simplean/edit/main/docs/{path}"
+default-theme = "light"
+preferred-dark-theme = "ayu"
+additional-js = ["theme/lean-highlight.js"]
+additional-css = ["theme/custom.css"]
+
+[output.html.search]
+enable = true
+limit-results = 30
+
+[output.html.playground]
+runnable = false
